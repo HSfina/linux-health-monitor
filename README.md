@@ -27,7 +27,7 @@ linux-health-monitor/
 
 ### 1. Clone the repo
 ```bash
-git clone git@github.com:YOURUSERNAME/linux-health-monitor.git
+git clone git@github.com:HSfina/linux-health-monitor.git
 cd linux-health-monitor
 chmod +x *.sh
 ```
