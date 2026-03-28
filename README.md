@@ -48,9 +48,9 @@ logfile        ~/.msmtp.log
 account        gmail
 host           smtp.gmail.com
 port           587
-from           YOUR_EMAIL@gmail.com
-user           YOUR_EMAIL@gmail.com
-password       YOUR_APP_PASSWORD
+from           hamssassia9@gmail.com
+user           hamssassia9@gmail.com
+password       ***Secret***
 
 account default : gmail
 ```
@@ -63,7 +63,7 @@ chmod 600 ~/.msmtprc
 crontab -e
 ```
 	```
-	0 * * * * /bin/bash /home/YOUR_USERNAME/linux-health-monitor/health_monitor.sh
+	0 * * * * /bin/bash /home/soufiane/linux-health-monitor/health_monitor.sh
 	```
 
 ---
