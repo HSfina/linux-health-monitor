@@ -1,8 +1,8 @@
 #!/bin/bash
 
+source ~/linux-health-monitor/config.cfg
+
 TIMESTAMP=$(date "+%Y-%m-%d %H:%M:%S")
-LOGFILE=~/linux-health-monitor/health.log
-EMAIL="hamssassia9@gmail.com"
 
 if ping -c 1 -W 5 8.8.8.8 > /dev/null 2>&1 || ping -c 1 -W 5 1.1.1.1 > /dev/null 2>&1; then
 	echo "[$TIMESTAMP] Network Status: UP ✅" | tee -a $LOGFILE
