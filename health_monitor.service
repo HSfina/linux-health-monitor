@@ -1,0 +1,15 @@
+[Unit]
+Description=Linux Health Monitor Service
+After=network.target
+
+[Service]
+Type=simple
+User=soufiane
+ExecStart=/bin/bash /home/soufiane/linux-health-monitor/monitor_service.sh
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
