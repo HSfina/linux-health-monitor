@@ -91,6 +91,26 @@ crontab -e
 
 ---
 
+## Systemd Service (Alternative to Cron)
+
+Install and enable the service:
+```bash
+sudo cp health_monitor.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable health_monitor
+sudo systemctl start health_monitor
+```
+
+Manage the service:
+```bash
+sudo systemctl status health_monitor   
+sudo systemctl stop health-monitor     
+sudo systemctl restart health-monitor  
+journalctl -u health-monitor -f
+```
+
+---
+
 ## Sample Log Output
 ```
 ========================================
