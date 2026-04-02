@@ -10,5 +10,5 @@ while true; do
     bash $DIR/ram_check.sh
     bash $DIR/disk_check.sh
     bash $DIR/network_check.sh
-    sleep 300  # 5 minutes
+    sleep ${MONITOR_INTERVAL:-300}
 done

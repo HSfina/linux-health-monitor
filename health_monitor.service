@@ -8,8 +8,9 @@ User=soufiane
 ExecStart=/bin/bash /home/soufiane/linux-health-monitor/monitor_service.sh
 Restart=always
 RestartSec=10
-StandardOutput=journal
-StandardError=journal
+Environment="MONITOR_INTERVAL=300"
+StandardOutput=append:/home/soufiane/linux-health-monitor/service.log
+StandardError=append:/home/soufiane/linux-health-monitor/service_error.log
 
 [Install]
 WantedBy=multi-user.target
