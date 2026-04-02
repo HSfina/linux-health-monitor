@@ -1,0 +1,7 @@
+[Unit]
+Description=Daily Health Report
+
+[Service]
+Type=oneshot
+User=soufiane
+ExecStart=/bin/bash /home/soufiane/linux-health-monitor/report.sh
