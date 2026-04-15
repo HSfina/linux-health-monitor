@@ -1,3 +1,6 @@
 .msmtprc
 *.log
 *.sw*
+service.log
+service_error.log
+EOF
