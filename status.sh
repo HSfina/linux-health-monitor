@@ -43,4 +43,4 @@ Last Log at	:	$LAST_LOG
 "
 
 
-echo "$REPORT" | tee -a $LOG_FILE
+echo "$REPORT" | tee -a $LOGFILE

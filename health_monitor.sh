@@ -1,29 +1,43 @@
 #!/bin/bash
 # health_monitor.sh - Main system health monitor
 # Author: Soufiane Hamssassia
-# Description: Checks CPU, RAM, and Disk usage, Network status and logs results
+# Description: Orchestrates system resource monitoring and logs results
 
+# ----------------------------
+# Setup
+# ----------------------------
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$DIR/config.cfg"
+mkdir -p "$(dirname "$LOGFILE")"
 
 TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
-
 HOSTNAME=$(hostname)
 UPTIME=$(uptime -p)
 USERS=$(who | wc -l)
 
-echo "========================================" >> $DIR/health.log
-echo "[$TIMESTAMP] Starting health check..." >> $DIR/health.log
-echo "[$TIMESTAMP] Server	:	$HOSTNAME" >> $DIR/health.log
-echo "[$TIMESTAMP] Uptime	:	$UPTIME" >> $DIR/health.log
-echo "[$TIMESTAMP] Users	:	$USERS connected " >> $DIR/health.log
-echo "========================================" >> $DIR/health.log
+# ----------------------------
+# Log header
+# ----------------------------
+cat <<EOF | tee -a "$LOGFILE"
+========================================
+[$TIMESTAMP] Starting health check...
+[$TIMESTAMP] Server    : $HOSTNAME
+[$TIMESTAMP] Uptime    : $UPTIME
+[$TIMESTAMP] Users     : $USERS connected
+========================================
+EOF
 
-bash $DIR/cpu_check.sh
-bash $DIR/ram_check.sh
-bash $DIR/disk_check.sh
-bash $DIR/network_check.sh
+# ----------------------------
+# Call unified monitoring script
+# ----------------------------
+# monitor_checks.sh handles CPU, RAM, Disk, and Network checks
+if bash "$DIR/monitor_checks.sh"; then
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] Monitoring completed successfully" | tee -a "$LOGFILE"
+else
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] ERROR: Monitoring script failed!" | tee -a "$LOGFILE"
+fi
 
-echo "========================================" >> $DIR/health.log
-echo "" >> $DIR/health.log
-echo "" >> $DIR/health.log
-echo "" >> $DIR/health.log
+# ----------------------------
+# Footer / spacing
+# ----------------------------
+echo -e "\n" >> "$LOGFILE"

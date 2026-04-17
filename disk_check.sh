@@ -1,4 +1,5 @@
 #!/bin/bash
+# Monitors disk usage, logs it, and sends an alert email if usage exceeds the threshold.
 
 source ~/linux-health-monitor/config.cfg
 

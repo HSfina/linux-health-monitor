@@ -1,7 +1,7 @@
 #!/bin/bash
 # security_audit.sh - Complete system security audit
 
-if [-f ~/linux-health-monitor/config.cfg ]; then
+if [ -f ~/linux-health-monitor/config.cfg ]; then
 	source ~/linux-health-monitor/config.cfg
 else
 	echo "Error: Config file not found"
@@ -12,7 +12,7 @@ TIMESTAMP=$(date "+%Y-%m-%d %H:%M:%S")
 DATE=$(date "+%Y-%m-%d")
 
 ROOT_USERS=$(awk -F: '$3 == 0 {print $1}' /etc/passwd)
-NO_PASS=$(sudo -n awk -F: '($2 == "" || $2 == "!" || $2 == "*") {print $1}' /etc/shadow)
+NO_PASS=$(sudo awk -F: '($2 == "" || $2 == "!" || $2 == "*") {print $1}' /etc/shadow)
 if [ -z "$NO_PASS" ]; then
     NO_PASS_ACC="  ✅ All users have passwords"
 else

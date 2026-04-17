@@ -5,23 +5,11 @@ After=network.target
 [Service]
 Type=simple
 User=soufiane
-WorkingDirectory=/home/soufiane/linux-health-monitor
-
-ExecStart=/home/soufiane/linux-health-monitor/monitor_service.sh
-
+ExecStart=/bin/bash /home/soufiane/linux-health-monitor/monitor_service.sh
 Restart=always
 RestartSec=10
-
-Environment="MONITOR_INTERVAL=300"
-
 StandardOutput=append:/home/soufiane/linux-health-monitor/service.log
 StandardError=append:/home/soufiane/linux-health-monitor/service_error.log
-
-# Security (optional but recommended)
-NoNewPrivileges=true
-PrivateTmp=true
-ProtectSystem=full
-ProtectHome=true
 
 [Install]
 WantedBy=multi-user.target

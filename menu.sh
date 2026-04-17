@@ -1,4 +1,5 @@
 #!/bin/bash
+# Provides an interactive menu to run health checks, view logs, test alerts, rotate logs, or exit.
 
 DIR=~/linux-health-monitor
 source $DIR/config.cfg
@@ -8,13 +9,12 @@ while true; do
     echo ""
     echo ""
     echo "|_________________________________________________________|"
-    echo "|__________________ Health Monitor Menu __________________|"
+    echo "|------------------ Health Monitor Menu ------------------|"
     echo "|1- Run health check now                                  |"
     echo "|2- View last log                                         |"
     echo "|3- Test email alert                                      |"
     echo "|4- Rotate logs                                           |"
     echo "|5- Exit                                                  |"
-    echo "|_________________________________________________________|"
     echo "|_________________________________________________________|"
 
     read -p "Choose option [1-5]: " choice
